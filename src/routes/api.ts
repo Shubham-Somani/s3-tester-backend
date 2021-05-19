@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import { createBucket, listBucket, deleteBucket } from '../controller/bucket/index'
-import { generateGetSignedUrl, listObjects, generatePutSignedUrl } from '../controller/object'
+import { generateGetSignedUrl, listObjects, generatePutSignedUrl, deleteObject } from '../controller/object'
 
 const apiRouter = Router()
 
@@ -16,16 +16,13 @@ apiRouter.delete('/bucket/:bucket', deleteBucket)
 ***/
 apiRouter.get('/objects/:bucket/:path', listObjects)
 apiRouter.post('/objects/:bucket', listObjects)
+apiRouter.delete('/objects/:bucket', deleteObject)
 
 /***
  * Signed URL Related Routes 
 ***/
 apiRouter.post('/get-signed-url/:bucket', generateGetSignedUrl)
 apiRouter.post('/put-signed-url/:bucket', generatePutSignedUrl)
-// router.get('/object-list')
-// router.post('/object')
-// router.put('/object')
-// router.delete('/object')
 
 
 export {

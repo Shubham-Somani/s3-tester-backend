@@ -5,8 +5,11 @@ import { messages } from '../../utils/messages'
 const formatInitParams = (header: string) => {
   const decodedParams = JSON.parse(Buffer.from(header, 'base64').toString())
   return {
-    REGION: decodedParams.region,
-    IDENTITY_POOL_ID: decodedParams.identityPoolId
+    region: decodedParams.region,
+    identityPoolId: decodedParams.identityPoolId,
+    accessKeyId: decodedParams.accessKeyId,
+    secretAccessKey: decodedParams.secretAccessKey,
+    type: decodedParams.type
   }
 }
 
